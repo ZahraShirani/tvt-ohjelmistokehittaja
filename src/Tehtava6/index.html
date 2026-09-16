@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<meta Charset="UTF-8">
+        <title>Lamppu</title>
+    </head>
+    <body>
+        <h2>Lampun Tilaa</h2>
+        <div id="lampuntila"></div>
+        Nimi: <input type="text" id="nimi" />
+        Hinta: <input type="number" id="hinta" />
+        <button onclick="lisaaTuote()">Luo tuote</button>
+        <div id="tuoteLista">Thyjä</div>
+        <div id="yhteensa">0</div>
+
+    </body>
+    <script>
+        class Tuote {
+            constructor(nimi, hinta) {
+                this.nimi = nimi;
+                this.hinta = hinta;
+            }
+            tulosta() {
+                return `Tuotteen nimi: ${this.nimi} <br/> Hinta: ${this.hinta}<br/>`;
+             
+            }
+        }

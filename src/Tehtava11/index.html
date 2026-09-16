@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta Charset="UTF-8">
+        <title>Tuotekatelogi</title>
+        <style>
+         table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    </head>
+    <body>
+    Nimi: <input type="text" id="name" placeholder="Nimi" />
+        Hinta: <input type="number" id="price" placeholder="Hinta" />   
+
+        <button onclick="addProduct()">Lisää tuote</button>
+        
+        <div id="productList">-</div>
+
+        <h1>"Product List"</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Hinta</th>
+                    
+                </tr>
+                </thead>
+            <tbody id="productTableBody">
+                
+            </tbody>            
+        </table>
+    <script src="script.js"></script>
+ </body>
+</html> 

@@ -29,7 +29,7 @@ tr:nth-child(even) {
         <button onclick="addStudent()">Lisää opiskelija</button>
         <div id="studentList">-</div>
 
-        <h1>Opiskelijalista </h1>
+        <h1>"Student List"</h1>
         <table>
             <thead>
                 <tr>
@@ -39,12 +39,12 @@ tr:nth-child(even) {
                     <th>arvosana</th>
                 </tr>
                 </thead>
-            <tbody id="studentList">
+            <tbody id="studentTableBody">
                 
             </tbody>            
         </table>
     </body>
-    
+
     <script>
         class student {
             constructor(name, age, course, grade) {
@@ -66,15 +66,10 @@ tr:nth-child(even) {
             printGrade() {
                 const grade = parseInt(this.grade);
                 
-                if (grade === 1) {
-                    return "Hylätty";
-                } else if (grade === 2) {
-                    return "Hyvä";
-                } else if (grade === 3) {
-                    return "Hyväksytty";
-                } else if (grade === 5) {
-                    return "Erinomainen";
-                }
+                if (grade === 1) return "Hylätty";
+                 if (grade === 2) return "Hyvä";
+                if (grade === 3) return "Hyväksytty";
+              if (grade === 5) return "Erinomainen";
                 return "Tuntematon arvosana";
             }
         }
@@ -95,7 +90,7 @@ tr:nth-child(even) {
                 }
 
                 //document.getElementById("studentList").innerHTML = students;
-                document.getElementById("studentList").innerHTML = students;
+                document.getElementById("studentTableBody").innerHTML = students;
             }
     
        
