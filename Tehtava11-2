@@ -1,0 +1,82 @@
+// määritellään tuoteluokka Product
+class Product {
+
+    constructor(name, price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    printDetails() {
+        return `<tr><td>${this.name}</td><td>${this.price}</td></tr>`;
+    }
+}
+
+
+// päivitetään tuotelista heti sivun latautuessa
+updateProductList();
+
+
+// päivittää tuotelistan
+function updateProductList() {
+
+    const productList = [];
+
+    fetch("api.php", {
+        method: "GET",
+    })
+    .then(response => response.json())
+    .then(data => {
+
+        data.forEach(product => {
+
+            productList.push(
+                new Product(product.name, product.price)
+            );
+
+        });
+
+        let products = "";
+
+        for (let i = 0; i < productList.length; i++) {
+            products += productList[i].printDetails();
+        }
+
+        document.getElementById("productList").innerHTML = products;
+
+    });
+}
+
+
+// lisää tuotteen tietokantaan ja päivittää html-sivulla olevan tuotelistan
+function addProduct() {
+
+    // haetaan tuotteen tiedot syötekentiltä
+    const name = document.getElementById("name").value;
+    const price = document.getElementById("price").value;
+
+    // luo tuoteolio syötekenttien tiedoilla
+    const product = new Product(name, price);
+
+    // lähetä tuoteolio JSON-muodossa
+    fetch("api.php", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(product)
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        if (data.success) {
+            document.getElementById("msg").textContent = "OK";
+        } else {
+            document.getElementById("msg").textContent = "Virhe";
+        }
+
+        updateProductList();
+
+    });
+}
